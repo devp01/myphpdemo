@@ -1,0 +1,14 @@
+on:
+  push:
+    branches: [ "*" ]
+
+stages:
+  - test
+
+php_lint:
+  stage: test
+  image: php:8.2
+  script:
+    - echo "Running PHP syntax check"
+    - find . -name "*.php" -print0 | xargs -0 -n1 php -l
+
